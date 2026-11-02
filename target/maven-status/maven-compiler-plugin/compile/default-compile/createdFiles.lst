@@ -1,0 +1,16 @@
+com/studentmanagement/model/Student.class
+com/studentmanagement/service/SubjectService.class
+com/studentmanagement/DemoDataLoader.class
+com/studentmanagement/controller/AcademicRecordController.class
+com/studentmanagement/controller/SubjectController.class
+com/studentmanagement/repository/AcademicRecordRepository.class
+com/studentmanagement/model/AcademicRecord.class
+com/studentmanagement/service/AcademicRecordService.class
+com/studentmanagement/controller/StudentController.class
+com/studentmanagement/model/Subject.class
+com/studentmanagement/service/StudentService.class
+com/studentmanagement/repository/StudentRepository.class
+com/studentmanagement/StudentManagementApplication.class
+com/studentmanagement/Student.class
+com/studentmanagement/repository/SubjectRepository.class
+com/studentmanagement/Main.class

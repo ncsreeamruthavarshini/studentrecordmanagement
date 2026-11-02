@@ -1,0 +1,787 @@
+
+/* =========================================
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3157c8;
+    --primary-dark: #2445a8;
+    --primary-light: #edf2ff;
+    --sidebar-bg: #172554;
+    --sidebar-hover: #263b75;
+    --background: #f5f7fc;
+    --white: #ffffff;
+    --text: #172033;
+    --muted: #778198;
+    --border: #e6eaf2;
+    --danger: #dc4545;
+    --shadow: 0 4px 18px rgba(30, 50, 90, 0.05);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================================
+   2. APPLICATION LAYOUT
+========================================= */
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================================
+   3. SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 255px;
+    min-width: 255px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 17px;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 8px 35px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    background: #5577ed;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.brand-text h2 {
+    font-size: 19px;
+    letter-spacing: -0.5px;
+}
+
+.brand-text p {
+    font-size: 11px;
+    color: #aab9e8;
+    margin-top: 4px;
+}
+
+.sidebar-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #899acb;
+    letter-spacing: 1.4px;
+    padding: 0 12px;
+    margin-bottom: 13px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 13px 14px;
+    border: none;
+    border-radius: 9px;
+    color: #c5d0ed;
+    background: transparent;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.nav-item:hover {
+    background: var(--sidebar-hover);
+    color: white;
+}
+
+.nav-item.active {
+    background: #4166dc;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 19px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-note {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background: #23376e;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.note-icon {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: #405b9f;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+.sidebar-note strong {
+    font-size: 12px;
+}
+
+.sidebar-note p {
+    font-size: 10px;
+    color: #b5c3e6;
+    margin-top: 4px;
+}
+
+/* =========================================
+   4. MAIN LAYOUT
+========================================= */
+
+.main-layout {
+    margin-left: 255px;
+    width: calc(100% - 255px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   5. TOP BAR
+========================================= */
+
+.topbar {
+    height: 77px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.topbar-title h2 {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.topbar-title p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64718a;
+}
+
+.status-dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: #22b573;
+}
+
+.sidebar-toggle {
+    display: none;
+    border: none;
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 19px;
+}
+
+/* =========================================
+   6. PAGE CONTENT AND NAVIGATION VIEWS
+========================================= */
+
+.page-content {
+    flex: 1;
+    padding: 32px 35px;
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.page-view[hidden],
+[hidden] {
+    display: none !important;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 9px;
+}
+
+.page-heading h1 {
+    font-size: 27px;
+    letter-spacing: -0.8px;
+}
+
+.page-description {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* =========================================
+   7. STATISTICS
+========================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.stat-icon {
+    width: 37px;
+    height: 37px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.stat-card h3 {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.stat-card p {
+    font-size: 29px;
+    font-weight: 800;
+    margin: 8px 0 5px;
+    color: #182957;
+}
+
+.stat-card > span {
+    color: #9ba4b7;
+    font-size: 11px;
+}
+
+/* =========================================
+   8. CONTENT CARDS
+========================================= */
+
+.content-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 23px;
+    box-shadow: var(--shadow);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.section-heading p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* =========================================
+   9. QUICK ACTIONS
+========================================= */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.quick-action {
+    background: #f9faff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    transition: 0.2s ease;
+}
+
+.quick-action:hover {
+    border-color: #a9bdf9;
+    background: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.quick-action-icon {
+    font-size: 22px;
+    color: var(--primary);
+}
+
+.quick-action strong {
+    font-size: 13px;
+}
+
+.quick-action > span:last-child {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   10. FORMS
+========================================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 650;
+    color: #48536b;
+}
+
+.form-group input,
+.form-group select,
+.filters select,
+.section-heading input {
+    width: 100%;
+    padding: 11px 12px;
+    background: white;
+    border: 1px solid #dfe4ee;
+    border-radius: 7px;
+    outline: none;
+    color: var(--text);
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.filters select:focus,
+.section-heading input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(49, 87, 200, 0.08);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 23px;
+}
+
+.form-actions button,
+button[type="submit"] {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 19px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-actions button:hover,
+button[type="submit"]:hover {
+    background: var(--primary-dark);
+}
+
+.cancel-button {
+    background: #edf0f6 !important;
+    color: #526079 !important;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.cancel-button:hover {
+    background: #dfe4ed !important;
+}
+
+/* =========================================
+   11. FILTERS
+========================================= */
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-heading input {
+    max-width: 270px;
+}
+
+/* =========================================
+   12. TABLES
+========================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background: #f6f8fc;
+}
+
+th {
+    color: #69758c;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 14px 12px;
+    white-space: nowrap;
+}
+
+td {
+    font-size: 12px;
+    padding: 14px 12px;
+    border-bottom: 1px solid #edf0f5;
+    color: #45516a;
+}
+
+tbody tr:hover {
+    background: #fafbff;
+}
+
+td button {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    padding: 7px 9px;
+    margin: 2px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+td button:hover {
+    background: #dce5ff;
+}
+
+td button.delete-button {
+    color: var(--danger);
+    background: #fff0f0;
+}
+
+td button.delete-button:hover {
+    background: #ffe0e0;
+}
+
+/* =========================================
+   13. STUDENT PROFILE
+========================================= */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 20px 0 28px;
+}
+
+.profile-card {
+    padding: 20px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.profile-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-card h3 {
+    color: #2445a8;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.profile-card p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.profile-subheading {
+    margin: 28px 0 14px;
+    font-size: 16px;
+}
+
+/* =========================================
+   14. INFORMATION CARDS
+========================================= */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.info-card {
+    padding: 20px;
+    background: #f7f9ff;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.info-card strong {
+    font-size: 13px;
+    color: var(--primary);
+}
+
+.info-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 9px;
+}
+
+/* =========================================
+   15. SECONDARY BUTTONS
+========================================= */
+
+.secondary-button {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    border-radius: 7px;
+    padding: 10px 13px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.secondary-button:hover {
+    background: #dce5ff;
+}
+
+/* =========================================
+   16. FOOTER
+========================================= */
+
+.app-footer {
+    padding: 19px 35px;
+    border-top: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+}
+
+.app-footer span {
+    margin: 0 5px;
+}
+
+/* =========================================
+   17. RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1150px) {
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-layout {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .topbar {
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .page-content {
+        padding: 25px 20px;
+    }
+
+    .topbar-right {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-card p {
+        font-size: 24px;
+    }
+
+    .form-grid,
+    .filters,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        padding: 17px;
+    }
+
+    .page-heading h1 {
+        font-size: 23px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-heading input {
+        max-width: 100%;
+    }
+
+    .topbar-title h2 {
+        font-size: 14px;
+    }
+
+    .topbar-title p {
+        font-size: 10px;
+    }
+}

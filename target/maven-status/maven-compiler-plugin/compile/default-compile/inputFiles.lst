@@ -1,0 +1,16 @@
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/DemoDataLoader.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/Main.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/Student.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/StudentManagementApplication.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/controller/AcademicRecordController.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/controller/StudentController.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/controller/SubjectController.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/model/AcademicRecord.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/model/Student.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/model/Subject.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/repository/AcademicRecordRepository.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/repository/StudentRepository.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/repository/SubjectRepository.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/service/AcademicRecordService.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/service/StudentService.java
+/Users/sreeamrutha/studentrecordmanagement/src/main/java/com/studentmanagement/service/SubjectService.java
